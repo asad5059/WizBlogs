@@ -1,18 +1,15 @@
-import React from 'react';
-import './Navbar.css';
+import { Navbar as BootstrapNavbar, Container, Button } from 'react-bootstrap';
 
 const Navbar = ({ onCreateBlogClick }) => {
   return (
-    <nav className="navbar">
-      <div className="navbar-brand">
-        <h1>WizBlogs</h1>
-      </div>
-      <div className="navbar-menu">
-        <button className="create-blog-btn" onClick={onCreateBlogClick}>
+    <BootstrapNavbar fixed="top" bg="white" className="shadow-sm">
+      <Container>
+        <BootstrapNavbar.Brand className="fw-bold">WizBlogs</BootstrapNavbar.Brand>
+        <Button variant="primary" onClick={onCreateBlogClick}>
           Create A New Blog
-        </button>
-      </div>
-    </nav>
+        </Button>
+      </Container>
+    </BootstrapNavbar>
   );
 };
 
