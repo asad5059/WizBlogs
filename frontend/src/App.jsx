@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react"
 import { getAllBlogs } from "../urlDispatcher";
+import BlogForm from './components/BlogForm';
+import Navbar from './components/Navbar';
 import './App.css';
 
-const BlogCard = ({ blog }) => (
-  <article key={blog.id} className="blog-card">
+const BlogPost = ({ blog }) => (
+  <article className="blog-post">
     <h2 className="blog-title">{blog.title}</h2>
-    <p className="blog-content">{blog.content}</p>
+    <div 
+      className="blog-content"
+      dangerouslySetInnerHTML={{ __html: blog.content }}
+    />
     <div className="blog-footer">
       <button className="read-more">Read More</button>
     </div>
@@ -14,6 +19,8 @@ const BlogCard = ({ blog }) => (
 
 function App() {
   const [blogs, setBlogs] = useState([]);
+  const [showBlogForm, setShowBlogForm] = useState(false);
+
   useEffect(() => {
     const fetchBlogs = async () => {
       const response = await getAllBlogs();
@@ -23,17 +30,36 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <header className="header">
-        <h1>WizBlogs</h1>
-        <p className="subtitle">Your Daily Dose of Wizardry</p>
-      </header>
+    <div className="app">
+      <Navbar onCreateBlogClick={() => setShowBlogForm(true)} />
       
-      <main className="blog-grid">
-        {blogs.map(blog => (
-          <BlogCard key={blog.id} blog={blog} />
-        ))}
-      </main>
+      <div className="content">
+        {showBlogForm ? (
+          <div className="blog-form-container">
+            <div className="blog-form-header">
+              <h2>Create New Blog</h2>
+              <button 
+                className="close-button"
+                onClick={() => setShowBlogForm(false)}
+              >
+                ×
+              </button>
+            </div>
+            <BlogForm 
+              onBlogCreated={(newBlog) => {
+                setBlogs([newBlog, ...blogs]);
+                setShowBlogForm(false);
+              }} 
+            />
+          </div>
+        ) : (
+          <main className="blog-list">
+            {blogs.map(blog => (
+              <BlogPost key={blog.id} blog={blog} />
+            ))}
+          </main>
+        )}
+      </div>
     </div>
   )
 }
