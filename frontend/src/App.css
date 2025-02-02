@@ -38,9 +38,6 @@
 
 .blog-list {
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1rem;
 }
 
 .blog-post {
@@ -161,9 +158,8 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1400px) {
   .blog-list {
-    max-width: 800px;
     margin: 0 auto;
   }
 }
