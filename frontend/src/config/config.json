@@ -1,0 +1,22 @@
+{
+    "devHost": "http://127.0.0.1:8000/",
+    "liveHost": "",
+    "blog": {
+        "getAllBlogs": {
+            "method": "GET",
+            "endpoint": "blog/"
+        },
+        "createBlog": {
+            "method": "POST",
+            "endpoint": "blog/"
+        },
+        "updateBlog": {
+            "method": "PUT",
+            "endpoint": "blog/{id}/"
+        },
+        "deleteBlog": {
+            "method": "DELETE",
+            "endpoint": "blog/{id}/"
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getAllBlogs } from "../urlDispatcher";
+import { getAllBlogs } from "./config/urlDispatcher";
 import BlogForm from './components/BlogForm';
 import Navbar from './components/Navbar';
 import { Container, Card, Button } from 'react-bootstrap';

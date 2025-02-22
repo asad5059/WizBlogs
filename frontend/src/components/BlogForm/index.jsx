@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import RichTextEditor from '../RichTextEditor';
-import { createBlog } from '../../../urlDispatcher';
+import { createBlog } from '../../config/urlDispatcher';
 import './BlogForm.css';
 
 const BlogForm = ({ onBlogCreated }) => {
